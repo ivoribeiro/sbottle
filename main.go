@@ -101,6 +101,12 @@ func main() {
 		libp2p.Identity(prvKey),
 	)
 
+	fmt.Println("This node's multiaddresses:")
+	for _, la := range host.Addrs() {
+		fmt.Printf(" - %v\n", la)
+	}
+	fmt.Println()
+
 	if err != nil {
 		panic(err)
 	}
