@@ -49,5 +49,14 @@ func main() {
 	fmt.Printf("Host ID %s\n", host.ID())
 	fmt.Printf("\n[*] Multiaddress: /ip4/%s/tcp/%v/p2p/%s\n", cfg.listenHost, cfg.listenPort, host.ID().Pretty())
 
+	peerChan := initMDNS(ctx, host, cfg.RendezvousString)
+
+	peer := <-peerChan // will block untill we discover a peer
+	fmt.Println("Found peer:", peer, ", connecting")
+
+	if err := host.Connect(ctx, peer); err != nil {
+		fmt.Println("Connection failed:", err)
+	}
+
 	select {} //wait here
 }
