@@ -14,9 +14,7 @@ sbottle is a secure and stateless space to exchange information
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 [![Open Source Love png3](https://badges.frapsoft.com/os/v3/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
-[![HitCount](http://hits.dwyl.io/ivoribeiro/sbottle.svg)](http://hits.dwyl.io/ivoribeiro/sbottle)
 # Table of Contents
-
 - [Getting Started](#getting-started)
 - [Usage](#usage)
   - [Prerequisites](#prerequisites)
