@@ -41,24 +41,32 @@ Give examples
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+Get dependencies
 
 ```
-Give the example
+go get -v
 ```
 
-And repeat
+Build application
 
 ```
-until finished
+go build
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Run the binary
+```
+./sbottle
+```
+
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+The fallowing build script will generate binaries for darwin, linux and windows 32 and 64 bit architectures and output them to the bin folder
 
+Run the script
+```
+./build.sh
+```
 ## Built With
 
 * [libp2p](https://github.com/libp2p/libp2p) - The p2p network stack
