@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"time"
 )
 
 type config struct {
@@ -9,6 +10,7 @@ type config struct {
 	ProtocolID       string
 	listenHost       string
 	listenPort       int
+	queryInterval    time.Duration
 }
 
 func parseFlags() *config {
@@ -18,6 +20,7 @@ func parseFlags() *config {
 	flag.StringVar(&c.listenHost, "host", "0.0.0.0", "The bootstrap node host listen address\n")
 	flag.StringVar(&c.ProtocolID, "pid", "/chat/1.1.0", "Sets a protocol id for stream headers")
 	flag.IntVar(&c.listenPort, "port", 4001, "node listen port")
+	flag.DurationVar(&c.queryInterval, "interval", time.Second, "mdns query interval")
 
 	flag.Parse()
 	return c

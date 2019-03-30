@@ -110,30 +110,30 @@ func main() {
 	host.SetStreamHandler(protocol.ID(cfg.ProtocolID), handleStream)
 	fmt.Printf("Host ID %s\n", host.ID())
 	fmt.Printf("\n[*] Multiaddress: /ip4/%s/tcp/%v/p2p/%s\n", cfg.listenHost, cfg.listenPort, host.ID().Pretty())
-	peerChan := initMDNS(ctx, host, cfg.RendezvousString)
+	peerChan := initMDNS(ctx, host, cfg.RendezvousString, cfg.queryInterval)
 	for true {
 		// channel from peerChan
 		peer := <-peerChan // will block until we discover a peer
 		fmt.Println("Found peer:", peer)
 		peers[peer.ID] = peer // Add peer to map
-		fmt.Println("Peers-> ",peers)
+		fmt.Println("Peers-> ", peers)
 		fmt.Println()
 	}
 	/*
-	if err := host.Connect(ctx, peer); err != nil {
-		fmt.Println("Connection failed:", err)
-	}
-	 //open a stream, this stream will be handled by handleStream other end
-	stream, err := host.NewStream(ctx, peer.ID, protocol.ID(cfg.ProtocolID))
-	if err != nil {
-		fmt.Println("Stream open failed", err)
-	} else {
-	srw := bufio.NewReadWriter(bufio.NewReader(stream), bufio.NewWriter(stream))
+		if err := host.Connect(ctx, peer); err != nil {
+			fmt.Println("Connection failed:", err)
+		}
+		 //open a stream, this stream will be handled by handleStream other end
+		stream, err := host.NewStream(ctx, peer.ID, protocol.ID(cfg.ProtocolID))
+		if err != nil {
+			fmt.Println("Stream open failed", err)
+		} else {
+		srw := bufio.NewReadWriter(bufio.NewReader(stream), bufio.NewWriter(stream))
 
-	go writeData(rw)
-	go readData(rw)
-		fmt.Println("Connected to:", peer)
-	}
+		go writeData(rw)
+		go readData(rw)
+			fmt.Println("Connected to:", peer)
+		}
 	*/
 	select {} //wait here
 }
