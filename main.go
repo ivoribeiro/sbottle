@@ -14,6 +14,7 @@ import (
 	"github.com/libp2p/go-libp2p-protocol"
 	"github.com/multiformats/go-multiaddr"
 	"os"
+	httpserver "github.com/ivoribeiro/sbottle/api/server"
 )
 
 func handleStream(stream inet.Stream) {
@@ -73,6 +74,7 @@ func writeData(rw *bufio.ReadWriter) {
 }
 
 func main() {
+	httpserver.serveAPI()
 	var peers = map[libpeer.ID]peerstore.PeerInfo{}
 	help := flag.Bool("help", false, "Display Help")
 	cfg := parseFlags()
